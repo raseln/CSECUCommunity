@@ -113,6 +113,21 @@ Route::post('/createpost',[
     Route::post('/createquestion', ['as' => 'question.create', 'uses' => 'QuestionController@questionCreateQuestion']);
     Route::post('/createblog', ['as' => 'blog.create', 'uses' => 'BlogController@blogCreateBlog']);
 
+	//Anne chat and search
+	Route::get('/chat','ChatController@chat');
+	Route::post('send','ChatController@send');
+	Route::post('saveToSession','ChatController@saveToSession');
+	Route::post('deleteSession','ChatController@deleteSession');
+	Route::post('getOldMessage','ChatController@getOldMessage');
+	Route::get('check',function(){
+		return session('chat');
+		
+	Route::get('/search',[
+	'uses' =>'UserController@executeSearch',
+	'as' => 'search',
+	'middleware' => 'auth']);
+});
+
 ?>
 
 
