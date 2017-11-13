@@ -99,23 +99,6 @@ Route::post('/createpost',[
 
 	Route::resource('tag', 'TagController');
 	Route::get('/post/tag/{tag_id}', 'HomeController@tag')->name('tag');
-	
-	//Anne chat
-Route::get('/chat','ChatController@chat');
-Route::post('send','ChatController@send');
-Route::post('saveToSession','ChatController@saveToSession');
-Route::post('deleteSession','ChatController@deleteSession');
-Route::post('getOldMessage','ChatController@getOldMessage');
-Route::get('check',function(){
-	return session('chat');
-});
-
-//Anne search
-
-Route::get('/search',[
-		'uses' =>'UserController@executeSearch',
-		'as' => 'search',
-		'middleware' => 'auth']);
 
 ?>
 
