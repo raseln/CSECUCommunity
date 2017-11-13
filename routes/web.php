@@ -100,6 +100,19 @@ Route::post('/createpost',[
 	Route::resource('tag', 'TagController');
 	Route::get('/post/tag/{tag_id}', 'HomeController@tag')->name('tag');
 
+	//Rasel Job
+	Route::get('/addJob', ['as' => 'addJob', 'uses' => 'JobController@getAddJob', 'middleware' => 'auth']);
+    Route::get('/addJob/{addJob}/edit', ['as' => 'edit.job', 'uses' => 'JobController@edit', 'middleware' => 'auth']);
+    Route::post('/addJob/{addJob}', ['as' => 'update.job', 'uses' => 'JobController@update']);
+    Route::get('/addJob/{addJob}', ['as' => 'cancle.job', 'uses' => 'JobController@cancle']);
+    Route::get('/delete-job/{job_id}', ['as' => 'delete.job', 'uses' => 'JobController@getDeleteJob', 'middleware' => 'auth']);
+    Route::get('/questionJob', ['as' => 'questionJob', 'uses' => 'QuestionController@getQuestionJob', 'middleware' => 'auth']);
+    Route::get('/blog', ['as' => 'blog', 'uses' => 'BlogController@getBlog', 'middleware' => 'auth']);
+    Route::post('/createjob', ['as' => 'job.create', 'uses' => 'JobController@jobCreateJob']);
+    Route::post('/createComment/{job_id}', ['as' => 'comment.create', 'uses' => 'JobController@store']);
+    Route::post('/createquestion', ['as' => 'question.create', 'uses' => 'QuestionController@questionCreateQuestion']);
+    Route::post('/createblog', ['as' => 'blog.create', 'uses' => 'BlogController@blogCreateBlog']);
+
 ?>
 
 
